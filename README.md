@@ -92,3 +92,60 @@ Note that the optimization by utilizing the repetitive pattern of the structures
 ## Acknowledgements
 
 zkLLM utilizes the CUDA implementation of BS12-381 curve, [`ec-gpu`](https://github.com/filecoin-project/ec-gpu), developed by [Filecoin](https://filecoin.io/). We extend our gratitude to Tonghe Bai and Andre Slavecu, both from University of Waterloo, for their contributions during the early stages of codebase development.
+# zkLLM (TinyLlama Execution)
+
+## Overview
+This project demonstrates the zkLLM pipeline for generating cryptographic commitments on Large Language Models.
+
+Since LLaMA-2 is restricted, TinyLlama (1.1B) is used as an alternative for execution.
+
+## What I Did
+- Compiled CUDA-based zkLLM backend
+- Replaced LLaMA-2 with TinyLlama
+- Executed commitment generation for all layers
+- Verified correctness using quantization error
+
+## How to Run
+```bash
+make
+python3 llama-ppgen.py 7
+python3 llama-commit.py 7 8
+##Results
+Model: TinyLlama (1.1B)
+Total layers processed: 22
+Commitment generation: Successful
+Max difference: ~0.00195
+Notes
+Original implementation uses LLaMA-2 (restricted)
+TinyLlama used for demonstration purposes
+
+Then click:
+👉 **Commit changes**
+
+---
+
+#  2. Add `.gitignore` (IMPORTANT)
+
+##  Where?
+In your repo → click **Add file → Create new file**
+
+Name:
+#.gitignore
+
+---
+
+## 👉 Paste THIS
+
+```text
+model-storage/
+*.o
+ffn
+main
+ppgen
+rmsnorm
+self-attn
+commit-param
+*.bin
+__pycache__/
+Click:
+ Commit new file
