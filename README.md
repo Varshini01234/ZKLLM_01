@@ -119,9 +119,6 @@ Notes
 Original implementation uses LLaMA-2 (restricted)
 TinyLlama used for demonstration purposes
 
-Then click:
-👉 **Commit changes**
-
 ---
 
 #  2. Add `.gitignore` (IMPORTANT)
@@ -133,8 +130,6 @@ Name:
 #.gitignore
 
 ---
-
-## 👉 Paste THIS
 
 ```text
 model-storage/
@@ -149,3 +144,9 @@ commit-param
 __pycache__/
 Click:
  Commit new file
+### Enhancement: Activation Quantization Check
+
+This project includes an additional module to evaluate quantization error for SiLU/SwiGLU activations, which are used in modern transformer models. This helps verify numerical stability when converting floating-point values to fixed-point representation in zkLLM.
+
+Run:
+python3 activation_quant_check.py
